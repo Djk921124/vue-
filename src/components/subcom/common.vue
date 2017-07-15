@@ -22,7 +22,8 @@
             </div>
         </div>
     
-    
+     <!--3.0 实现获取更多按钮-->
+        <mt-button type="danger" size="large" plain @click="changePage">加载更多</mt-button>
   </div>
 </template>
 <script>
@@ -72,7 +73,8 @@ export default {
         })
     },
     changePage(){
-        
+        this.pageindex++;
+        this.getComment(this.pageindex);
     }
   },
   created(){
