@@ -23,6 +23,7 @@ import newsinfo from './components/news/newsinfo.vue';
 var router1 = new vueRouter({
 	linkActiveClass:'mui-active',
 	routes:[
+		{path:'/',redirect:'/home'},  //默认进入首页
 		{path:'/home',component:home}, 
 		{path:'/shopcar/shopcar',component:shopcar},
 		{path:'/news/newlist',component:newlist},
