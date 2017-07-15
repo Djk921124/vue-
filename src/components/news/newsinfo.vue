@@ -7,11 +7,16 @@
       <div id="content" v-html="info.content">
 
       </div>
+      <common :id="id"></common>
   </div>
 </template>
 <script>
+import common from '../subcom/common.vue'
 export default {
   name: "component_name",
+  components:{
+    common
+  },
   data () {
     return {
         id:0,
@@ -24,7 +29,7 @@ export default {
   },
   methods:{
       getInfo(){
-          var url='http://182.254.146.100:8899/api/getnew/'+this.id;
+          var url=this.$comment.apiWhere+'/api/getnew/'+this.id;
           this.$http.get(url).then(function(res){
               var data = res.body;
               if(data.status != 0){
@@ -37,4 +42,16 @@ export default {
 }
 </script>
 <style lang="css" scoped>
+.title h4 {
+    color: #0094ff;
+}
+
+.title p {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.title,
+#content {
+    padding: 5px;
+}
 </style>

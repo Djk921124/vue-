@@ -58,6 +58,10 @@ Vue.filter('datefmt',function(input,datetime){
 	return moment(input).format(datetime);
 })
 
+//引入全局API地址
+import comment from './kits/comment.js';
+Vue.prototype.$comment = comment
+
 // 5.0 利用Vue对象进行解析渲染
 new Vue({
 	el:'#app',
