@@ -15,7 +15,7 @@ import shopcar from './components/shopcar/shopcar.vue';
 import newlist from './components/news/newlist.vue';
 import goodlist from './components/goods/goodlist.vue';
 import newsinfo from './components/news/newsinfo.vue';
-
+import photo from './components/photo/photolist.vue';
 
 
 
@@ -28,7 +28,8 @@ var router1 = new vueRouter({
 		{path:'/shopcar/shopcar',component:shopcar},
 		{path:'/news/newlist',component:newlist},
 		{path:'/news/newsinfo/:id',component:newsinfo},		
-		{path:'/goods/goodlist',component:goodlist}		
+		{path:'/goods/goodlist',component:goodlist},
+		{path:'/photo/photolist',component:photo}
 	]
 	});
 

@@ -51,12 +51,17 @@ export default {
         var url = this.$comment.apiWhere + '/api/postcomment/'+this.id;
         this.$http.post(url,{ content : this.postcontent },{ emulateJSON: true }).then(function(res){
             Toast(res.body.message);
-           this.list =  [{
+        //    this.list =  [{
+        //         "user_name": "匿名用户",
+        //         "add_time": new Date(),
+        //         "content": this.postcontent
+        //     }].concat(this.list);
+            //这里是把输入的数据插入在数组最前
+            this.list.unshift({
                 "user_name": "匿名用户",
                 "add_time": new Date(),
                 "content": this.postcontent
-            }].concat(this.list);
-            
+            })
         })
         this.postcontent = "";
     },
@@ -70,6 +75,7 @@ export default {
                 return;
             }
             this.list = this.list.concat(data.message);
+           // this.list.push.apply(this.list,data.message)
         })
     },
     changePage(){
