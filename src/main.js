@@ -42,9 +42,6 @@ import mintui from 'mint-ui';
 // 在Vue中全局使用mintui
 Vue.use(mintui);
 
-// import ElementUI from 'element-ui';
-// import 'element-ui/lib/theme-default/index.css';
-// Vue.use(ElementUI);
 
 import vueResource from 'vue-resource';
 Vue.use(vueResource);
@@ -63,6 +60,11 @@ Vue.filter('datefmt',function(input,datetime){
 //引入全局API地址
 import comment from './kits/comment.js';
 Vue.prototype.$comment = comment
+
+//导入全局图片预览组件
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview);
+
 
 // 5.0 利用Vue对象进行解析渲染
 new Vue({
