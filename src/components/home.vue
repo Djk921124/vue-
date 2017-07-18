@@ -1,11 +1,12 @@
 <template>
 
     <div id="tmpl">
-        <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="item in list">
-                <img :src="item.img">
-            </mt-swipe-item>
-        </mt-swipe>
+            <!--<mt-swipe :auto="4000">
+                <mt-swipe-item v-for="item in list">
+                    <img :src="item.img">
+                </mt-swipe-item>
+            </mt-swipe>-->
+            <turnimgs :imgs='list'></turnimgs>
 
                 <div class="mui-content">
             <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -54,7 +55,11 @@
 
 <script>
 import { Toast } from 'mint-ui';
+import turnimgs from './subcom/turnimgs.vue'
 export default{
+    components:{
+        turnimgs
+    },
     data(){
         return{
             list:[]

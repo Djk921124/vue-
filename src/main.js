@@ -14,6 +14,9 @@ import home from './components/home.vue';
 import shopcar from './components/shopcar/shopcar.vue';
 import newlist from './components/news/newlist.vue';
 import goodlist from './components/goods/goodlist.vue';
+import goodsinfo from './components/goods/goodsinfo.vue';
+import goodsdesc from './components/goods/goodsdesc.vue';
+import goodscomment from './components/goods/goodscomment.vue';
 import newsinfo from './components/news/newsinfo.vue';
 import photolist from './components/photo/photolist.vue';
 import photoinfo from './components/photo/photoinfo.vue';
@@ -31,6 +34,9 @@ var router1 = new vueRouter({
 		{path:'/news/newlist',component:newlist},
 		{path:'/news/newsinfo/:id',component:newsinfo},		
 		{path:'/goods/goodlist',component:goodlist},
+		{path:'/goods/goodsinfo/:id',component:goodsinfo},	
+		{path:'/goods/goodsdesc/:id',component:goodsdesc},	
+		{path:'/goods/goodscomment/:id',component:goodscomment},		
 		{path:'/photo/photolist',component:photolist},
 		{path:'/photo/photoinfo/:id',component:photoinfo},
 	]
