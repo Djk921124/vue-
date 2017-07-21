@@ -30,7 +30,7 @@ var router1 = new vueRouter({
 	routes:[
 		{path:'/',redirect:'/home'},  //默认进入首页
 		{path:'/home',component:home}, 
-		{path:'/shopcar/shopcar',component:shopcar},
+		{path:'/shopcar',component:shopcar},
 		{path:'/news/newlist',component:newlist},
 		{path:'/news/newsinfo/:id',component:newsinfo},		
 		{path:'/goods/goodlist',component:goodlist},

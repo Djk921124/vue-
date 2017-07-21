@@ -13,6 +13,8 @@ export default {
         count:1
     };
   },
+  props:['numMax']
+  ,
   methods:{
       subscribe(){
           if(this.count > 1 ){
@@ -21,9 +23,10 @@ export default {
           this.sendmessage();
       },
       add(){
-          this.count++;
-          this.sendmessage();
-          
+          if(this.count < this.numMax){
+            this.count++;
+          }
+          this.sendmessage();      
       },
        sendmessage(){
          this.$emit('dataobj',this.count);

@@ -12,11 +12,11 @@
 				</li>
                 <li class="inputli">
 					购买数量： 
-                   <inputNumber v-on:dataobj="getcount" class="inputnumber"></inputNumber>
+                   <inputNumber v-on:dataobj="getcount" class="inputnumber" :numMax = 'numMax' ></inputNumber>
 				</li>
 				<li>
 					<mt-button type="primary" size="small">立即购买</mt-button>
-					<mt-button type="danger" size="small" >加入购物车</mt-button>
+					<mt-button type="danger" size="small" @click="toshopcar">加入购物车</mt-button>
 				</li>
 			</ul>
 	</div>
@@ -42,8 +42,12 @@
 </template>
 
 <script>
-import turnuimgs from '../subcom/turnimgs.vue'
-import inputNumber from '../subcom/inputNumber.vue'
+import turnuimgs from '../subcom/turnimgs.vue';
+import inputNumber from '../subcom/inputNumber.vue';
+import {vm,COUNTSTR} from '../../kits/vm.js';
+import {setItem,valueObj} from '../../kits/localS.js';
+
+
 export default {
   name: "component_name",
   components:{
@@ -54,7 +58,9 @@ export default {
     return {
         id:0,
         imgs:[],
-        info:{}
+        info:{},
+        inputNumberCount:1,
+        numMax : 0,
     };
   },
   created(){
@@ -83,12 +89,21 @@ export default {
 					return;
             }
             this.info =res.body.message[0];
+            this.numMax = this.info.stock_quantity;
+
         })
     },
      getcount(count){
          // count 即为子组件传递过来的数据
          this.inputNumberCount = count;
- },
+        //  if(this.inputNumberCount > this.numMax){
+        //      this.inputNumberCount = this.numMax;
+        //  }
+    },
+        toshopcar(){
+                // 触发事件 COUNTSTR代表事件名 是vm.js中定义的常量
+                vm.$emit(COUNTSTR,this.inputNumberCount);
+        }
   }
 }
 </script>

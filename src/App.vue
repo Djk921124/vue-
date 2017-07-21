@@ -21,7 +21,7 @@
 				<span class="mui-tab-label">消息</span>
 			</router-link>
 			<router-link class="mui-tab-item" to="/shopcar">
-				<span class="mui-icon mui-icon-contact"><span class="mui-badge">9</span></span>
+				<span class="mui-icon mui-icon-contact"><span id="badge" class="mui-badge">0</span></span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
 			<router-link class="mui-tab-item" to="/tabbar-with-map">
@@ -36,6 +36,11 @@
 <script>
 // 按需导入
 	//import {add} from './calc.js';
+	import {vm,COUNTSTR} from './kits/vm.js';
+	vm.$on(COUNTSTR,function(count){
+		var badge = document.querySelector("#badge");
+		badge.innerText = parseInt(badge.innerText) + count;
+	})
 
 
 	// 负责导出 .vue这个组件对象(它本质上是一个Vue对象,所以Vue中该定义的元素都可以使用)
