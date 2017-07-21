@@ -8,7 +8,7 @@
 				<div class="bottom">
 					<ul>
 						<li>￥{{item.sell_price}}</li>
-						<li> <carinputNumber  :initCount="item.cou" :goodsid="item.id"></carinputNumber> </li>
+						<li> <carinputNumber  :initCount="item.cou" :goodsid="item.id" v-on:cardataobj="getInput"></carinputNumber> </li>
 						<li><a href="javascript:void(0)">删除</a></li>
 						<!--<li><a href="javascript:void(0)" @click="delrow(item.id,index)">删除</a></li>						-->
 					</ul>
@@ -30,7 +30,7 @@
   </div>
 </template>
 <script>
-    import {getgoodsObject} from '../../kits/localS.js';
+    import {getgoodsObject,updateData} from '../../kits/localS.js';
 	import carinputNumber from '../subcom/carinputNumber.vue';
 
 export default {
@@ -66,10 +66,23 @@ export default {
 			}
 			res.body.message.forEach((item)=>{
 				item.cou = obj[item.id];
+				// 为了解决一个bug所以必须在此处初始化values数组全部为false
+				this.value.push(false);
 			})
 			this.datalist = res.body.message;
 		})
 		
+	},
+	getInput(resObj){
+		updateData(resObj);
+		for(var i=0;i<this.datalist.length;i++){
+			if(resObj.type == 'add'){
+				this.datalist[i].cou = +this.datalist[i].cou + 1;
+			}else{
+				this.datalist[i].cou = +this.datalist[i].cou - 1;
+			}
+			break;
+		}
 	}
   },
   computed:{

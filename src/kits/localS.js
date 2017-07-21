@@ -38,3 +38,24 @@ export function getgoodsObject(){
     }
     return resObj;
 }
+
+export function updateData(obj){
+    var arr = getItem();
+    var count = 1;
+    if(obj.type == 'add'){
+        arr.push({goodsid:obj.goodsid,count:count})
+    }else{
+        for(var i=0 ; i<arr.length;i++){
+             if(arr[i].goodsid == obj.goodsid){
+                if(arr[i].count > 1 ){
+                    arr[i].count--;
+                    break;
+                }else{
+                    arr.splice(i,1);
+                    break
+                }
+            }
+        }
+    }
+    localStorage.setItem(KEY,JSON.stringify(arr));
+}

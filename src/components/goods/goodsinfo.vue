@@ -103,6 +103,9 @@ export default {
         toshopcar(){
                 // 触发事件 COUNTSTR代表事件名 是vm.js中定义的常量
                 vm.$emit(COUNTSTR,this.inputNumberCount);
+                valueObj.goodsid = this.id;
+				valueObj.count = this.inputNumberCount;
+				setItem(valueObj);
         }
   }
 }
