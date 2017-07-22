@@ -76,7 +76,7 @@ export default {
 	getInput(resObj){
 		updateData(resObj);
 		for(var i=0;i<this.datalist.length;i++){
-			if(this.datalist[i].id == resObj.goodsid){
+			if(this.datalist[i].id == resObj.goodsid){ //绑定对应的商品列表
 				if(resObj.type == 'add'){
 				this.datalist[i].cou = +this.datalist[i].cou + 1;
 			}else{
