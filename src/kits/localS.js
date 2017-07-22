@@ -48,7 +48,7 @@ export function updateData(obj){
         for(var i=0 ; i<arr.length;i++){
              if(arr[i].goodsid == obj.goodsid){
                 if(arr[i].count > 1 ){
-                    arr[i].count--;
+                    arr[i].count = arr[i].count -1;
                     break;
                 }else{
                     arr.splice(i,1);
