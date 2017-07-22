@@ -1,7 +1,8 @@
 <template>
 	<div id="subtmpl">
 		<div class="inleft div" @click="substrict">-</div>
-		<div class="incenter div" v-text="count"></div>
+		<!--<div class="incenter div" v-text="count"></div> 使用count会出现bug在商品全部选中时，删除，数据会错乱-->
+		<div class="incenter div" v-text="initCount"></div>		
 		<div class="inright div"  @click="add">+</div>
 	</div>
 </template>

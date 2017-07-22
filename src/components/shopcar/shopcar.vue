@@ -9,7 +9,7 @@
 					<ul>
 						<li>￥{{item.sell_price}}</li>
 						<li> <carinputNumber  :initCount="item.cou" :goodsid="item.id" v-on:cardataobj="getInput"></carinputNumber> </li>
-						<li><a href="javascript:void(0)">删除</a></li>
+						<li><a href="javascript:void(0)" @click ="del(item.id,index)">删除</a></li>
 						<!--<li><a href="javascript:void(0)" @click="delrow(item.id,index)">删除</a></li>						-->
 					</ul>
 				</div>
@@ -30,7 +30,7 @@
   </div>
 </template>
 <script>
-    import {getgoodsObject,updateData} from '../../kits/localS.js';
+    import {getgoodsObject,updateData,removeItem} from '../../kits/localS.js';
 	import carinputNumber from '../subcom/carinputNumber.vue';
 
 export default {
@@ -85,6 +85,12 @@ export default {
 			break;
 			}
 		}
+	},
+	del(goodsid,index){
+		console.log(goodsid,index);
+		this.value.splice(index,1);
+		this.datalist.splice(index,1);
+		removeItem(goodsid);
 	}
   },
   computed:{

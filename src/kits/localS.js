@@ -59,3 +59,13 @@ export function updateData(obj){
     }
     localStorage.setItem(KEY,JSON.stringify(arr));
 }
+
+export function removeItem(goodsid){
+    var arr = getItem();
+    for(var i=arr.length-1;i>=0;i--){
+        if(arr[i].goodsid == goodsid){
+            arr.splice(i,1);
+        }
+    }
+    localStorage.setItem(KEY,JSON.stringify(arr));
+}
