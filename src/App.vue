@@ -2,10 +2,10 @@
 <template>
 	<div>
 		<!-- 1.0 template主要是放html元素的（html的页面结构） -->
-				<mt-header title="传智黑马项目">
-					<router-link to="/" slot="left">
-						<mt-button icon="back">返回</mt-button>
-					</router-link>
+				<mt-header title="VUE项目">
+					<div v-if="isshow" id="back">
+						<a href="javascript:void(0)" @click="backto">返回</a>
+					</div>
 					<mt-button icon="more" slot="right"></mt-button>
 				</mt-header>
 						<!-- 路由占位符 -->
@@ -49,7 +49,18 @@
 	export default{  // es6的导出对象的写法
 		data(){  //等价于 es5的 data:function(){
 			return {
-			
+			isshow : false
+			}
+		},
+		watch:{
+			'$route':function(newroute,oldroute){
+				if(newroute.path.toLowerCase()=='/home'
+				|| newroute.path.toLowerCase()=='/userinfo'
+				|| newroute.path.toLowerCase()=='/login'){
+					this.isshow = false;
+				}else{
+					this.isshow = true;
+				}
 			}
 		},
 		methods:{
@@ -58,6 +69,9 @@
 			// substrict:substrict
 			tip:function(){
 				Toast('你好');
+			},
+			backto(){
+				this.$router.go(-1);
 			}
 		},
 		created(){
